@@ -10,18 +10,31 @@ Aplicación que permite comparar la información de las operaciones interbancari
 
 """
 def main():
-    st.title('Árbitro bancario')  # Nombre de la aplicación
-    
-    # Enlace de inicio de sesión en la esquina superior derecha
-    st.write("[Iniciar sesión](#)")
+    st.title('ABCD')  # Nombre de la aplicación
 
-def main():
+    st.write("[Iniciar sesión](#)")  # Enlace de inicio de sesión en la esquina superior derecha
+
     st.sidebar.title('Menú')
     options = ['Ingresar operaciones', 'Histórico de operaciones', 'Operaciones en curso', 'Mismatch de operaciones', 'Alertas']
     choice = st.sidebar.radio('Selecciona una opción', options)
 
     if choice == 'Ingresar operaciones':
-        st.write("Aquí puedes ingresar nuevas operaciones")
+        st.header('Ingresar operaciones')
+
+        # Campos de entrada para ingresar la información
+        operacion = st.text_input("Operación (máximo 10 caracteres)", max_chars=10)
+        contraparte = st.selectbox("Contraparte", ['abc', 'eft', 'yuv', 'khi'])
+        tipo = st.selectbox("Tipo", ['swap', 'fwd'])
+        pata = st.selectbox("Pata", ['Paga', 'Recibe'])
+        tiempo = st.text_input("Tiempo (formato dd/mm/yyyy)")
+        monto = st.number_input("Monto", min_value=0.0)
+        tasa = st.number_input("Tasa", min_value=0.0)
+
+        # Botón para enviar los datos ingresados
+        if st.button("Enviar"):
+            # Aquí puedes procesar los datos ingresados, por ejemplo, guardarlos en una base de datos
+            st.success("Datos enviados correctamente")
+
     elif choice == 'Histórico de operaciones':
         st.write("Aquí puedes ver el histórico de operaciones")
     elif choice == 'Operaciones en curso':
