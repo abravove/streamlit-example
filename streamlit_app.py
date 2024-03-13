@@ -11,6 +11,9 @@ Aplicación que permite comparar la información de las operaciones interbancari
 """
 def main():
     st.title('Árbitro bancario')  # Nombre de la aplicación
+    
+    # Enlace de inicio de sesión en la esquina superior derecha
+    st.write("[Iniciar sesión](#)")
 
 def main():
     st.sidebar.title('Menú')
