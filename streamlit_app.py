@@ -9,6 +9,19 @@ import streamlit as st
 Aplicación que permite comparar la información de las operaciones interbancarias. 
 
 """
+
+datos = {
+    'Fecha de ingreso': ['2024-03-13', '2024-03-14', '2024-03-15'],
+    'Operación': ['Compra', 'Venta', 'Compra'],
+    'Contraparte': ['Cliente A', 'Cliente B', 'Cliente C'],
+    'Tipo': ['Acciones', 'Futuros', 'Opciones'],
+    'Paga o recibe': ['Paga', 'Recibe', 'Paga'],
+    'Tiempo': ['Corto plazo', 'Largo plazo', 'Corto plazo'],
+    'Monto': [1000, 2000, 1500],
+    'Tasa': [0.05, 0.03, 0.04],
+    'Rescatar': [True, False, True]
+}
+
 def main():
     st.title('Menú de Operaciones')
 
