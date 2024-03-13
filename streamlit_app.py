@@ -17,7 +17,7 @@ def main():
 
     st.sidebar.title(':heart: Menú')
 
-    options = ['Ingresar operaciones', 'Histórico de operaciones', 'Operaciones en curso', 'Mismatch de operaciones', 'Alertas']
+    options = ['":pencil: **Ingresar operaciones**"', 'Histórico de operaciones', 'Operaciones en curso', 'Mismatch de operaciones', 'Alertas']
     choice = st.sidebar.radio('Selecciona una opción', options)
 
     if choice == 'Ingresar operaciones':
