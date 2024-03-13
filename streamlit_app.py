@@ -10,6 +10,9 @@ Aplicación que permite comparar la información de las operaciones interbancari
 
 """
 def main():
+    st.title('Árbitro bancario')  # Nombre de la aplicación
+
+def main():
     st.sidebar.title('Menú')
     options = ['Ingresar operaciones', 'Histórico de operaciones', 'Operaciones en curso', 'Mismatch de operaciones', 'Alertas']
     choice = st.sidebar.radio('Selecciona una opción', options)
