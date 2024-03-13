@@ -38,3 +38,30 @@ st.altair_chart(alt.Chart(df, height=700, width=700)
         color=alt.Color("idx", legend=None, scale=alt.Scale()),
         size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
     ))
+
+def generar_tabla():
+    # Definir los datos
+    datos = {
+        'Fecha de ingreso': ['2024-03-13', '2024-03-14', '2024-03-15'],
+        'Operación': ['Compra', 'Venta', 'Compra'],
+        'Contraparte': ['Cliente A', 'Cliente B', 'Cliente C'],
+        'Tipo': ['Acciones', 'Futuros', 'Opciones'],
+        'Paga o recibe': ['Paga', 'Recibe', 'Paga'],
+        'Tiempo': ['Corto plazo', 'Largo plazo', 'Corto plazo'],
+        'Monto': [1000, 2000, 1500],
+        'Tasa': [0.05, 0.03, 0.04],
+        'Rescatar': [True, False, True]
+    }
+
+    # Crear DataFrame
+    df = pd.DataFrame(datos)
+
+    # Mostrar tabla
+    st.write(df)
+
+def main():
+    st.title('Tabla de operaciones')
+    generar_tabla()
+
+if __name__ == "__main__":
+    main()
