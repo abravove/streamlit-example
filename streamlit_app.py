@@ -10,10 +10,20 @@ from datetime import datetime
 Aplicación que permite comparar la información de las operaciones interbancarias. 
 
 """
+import streamlit as st
+
 def main():
     st.title('ABCD')  # Nombre de la aplicación
 
     st.sidebar.title('Menú')
+
+    # Íconos usando Markdown
+    st.sidebar.markdown(":pencil: **Ingresar operaciones**")
+    st.sidebar.markdown(":chart_with_upwards_trend: **Histórico de operaciones**")
+    st.sidebar.markdown(":hourglass_flowing_sand: **Operaciones en curso**")
+    st.sidebar.markdown(":exclamation: **Mismatch de operaciones**")
+    st.sidebar.markdown(":warning: **Alertas**")
+
     options = ['Ingresar operaciones', 'Histórico de operaciones', 'Operaciones en curso', 'Mismatch de operaciones', 'Alertas']
     choice = st.sidebar.radio('Selecciona una opción', options)
 
