@@ -53,7 +53,7 @@ def main():
             guardar_operacion(nueva_operacion)
             st.success("Operación ingresada correctamente")
 
-    elif choice == 'Histórico de operaciones':
+    elif choice == ':chart_with_upwards_trend: **Histórico de operaciones**':
         st.header('Histórico de operaciones')
         # Obtiene todas las operaciones ingresadas
         operaciones = obtener_operaciones()
