@@ -12,8 +12,6 @@ Aplicación que permite comparar la información de las operaciones interbancari
 def main():
     st.title('ABCD')  # Nombre de la aplicación
 
-    st.write("[Iniciar sesión](#)")  # Enlace de inicio de sesión en la esquina superior derecha
-
     st.sidebar.title('Menú')
     options = ['Ingresar operaciones', 'Histórico de operaciones', 'Operaciones en curso', 'Mismatch de operaciones', 'Alertas']
     choice = st.sidebar.radio('Selecciona una opción', options)
