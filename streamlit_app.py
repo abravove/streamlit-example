@@ -4,41 +4,51 @@ import pandas as pd
 import streamlit as st
 
 """
-# Welcome to Streamlit!
+# Arbitro bancario
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:.
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+Aplicación que permite comparar la información de las operaciones interbancarias. 
 
-In the meantime, below is an example of what you can do with just a few lines of code:
 """
+def main():
+    st.title('Menú de Operaciones')
 
-num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
-num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
+    # Opciones del menú
+    opciones_menu = ['Ingresar operaciones', 'Histórico de operaciones', 
+                     'Operaciones en curso', 'Mismatch de operaciones', 
+                     'Alertas']
 
-indices = np.linspace(0, 1, num_points)
-theta = 2 * np.pi * num_turns * indices
-radius = indices
+    # Mostrar menú en la barra lateral
+    seleccion = st.sidebar.selectbox('Menú', opciones_menu)
 
-x = radius * np.cos(theta)
-y = radius * np.sin(theta)
+    # Dependiendo de la selección, mostrar el contenido correspondiente
+    if seleccion == 'Ingresar operaciones':
+        mostrar_ingresar_operaciones()
+    elif seleccion == 'Histórico de operaciones':
+        mostrar_historico_operaciones()
+    elif seleccion == 'Operaciones en curso':
+        mostrar_operaciones_en_curso()
+    elif seleccion == 'Mismatch de operaciones':
+        mostrar_mismatch_operaciones()
+    elif seleccion == 'Alertas':
+        mostrar_alertas()
 
-df = pd.DataFrame({
-    "x": x,
-    "y": y,
-    "idx": indices,
-    "rand": np.random.randn(num_points),
-})
+def mostrar_ingresar_operaciones():
+    st.write('Aquí puedes ingresar nuevas operaciones.')
 
-st.altair_chart(alt.Chart(df, height=700, width=700)
-    .mark_point(filled=True)
-    .encode(
-        x=alt.X("x", axis=None),
-        y=alt.Y("y", axis=None),
-        color=alt.Color("idx", legend=None, scale=alt.Scale()),
-        size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
-    ))
+def mostrar_historico_operaciones():
+    st.write('Aquí puedes ver el histórico de operaciones.')
 
+def mostrar_operaciones_en_curso():
+    st.write('Aquí puedes ver las operaciones en curso.')
+
+def mostrar_mismatch_operaciones():
+    st.write('Aquí puedes ver los casos de mismatch de operaciones.')
+
+def mostrar_alertas():
+    st.write('Aquí puedes ver las alertas.')
+
+if __name__ == "__main__":
+    main()
 def generar_tabla():
     # Definir los datos
     datos = {
