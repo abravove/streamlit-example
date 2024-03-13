@@ -31,6 +31,7 @@ def main():
         tiempo = st.text_input("Tiempo (formato dd/mm/yyyy)")
         monto = st.number_input("Monto", min_value=0.0)
         tasa = st.number_input("Tasa", min_value=0.0)
+        mach = st.radio("¿Mach?", ["Sí", "No"])
 
         # Botón para enviar los datos ingresados
         if st.button("Enviar"):
@@ -47,6 +48,7 @@ def main():
                 "Tiempo": tiempo,
                 "Monto": monto,
                 "Tasa": tasa
+                "Mach": mach
             }
 
             # Guarda la operación en una lista o base de datos
