@@ -9,69 +9,21 @@ import streamlit as st
 Aplicación que permite comparar la información de las operaciones interbancarias. 
 
 """
-
-datos = {
-    'Fecha de ingreso': ['2024-03-13', '2024-03-14', '2024-03-15'],
-    'Operación': ['Compra', 'Venta', 'Compra'],
-    'Contraparte': ['Cliente A', 'Cliente B', 'Cliente C'],
-    'Tipo': ['Acciones', 'Futuros', 'Opciones'],
-    'Paga o recibe': ['Paga', 'Recibe', 'Paga'],
-    'Tiempo': ['Corto plazo', 'Largo plazo', 'Corto plazo'],
-    'Monto': [1000, 2000, 1500],
-    'Tasa': [0.05, 0.03, 0.04],
-    'Rescatar': [True, False, True]
-}
-
 def main():
-    st.title('Menú de Operaciones')
+    st.sidebar.title('Menú')
+    options = ['Ingresar operaciones', 'Histórico de operaciones', 'Operaciones en curso', 'Mismatch de operaciones', 'Alertas']
+    choice = st.sidebar.radio('Selecciona una opción', options)
 
-    # Lista de opciones del menú
-    opciones_menu = ['Ingresar operaciones', 'Histórico de operaciones', 
-                     'Operaciones en curso', 'Mismatch de operaciones', 
-                     'Alertas']
-
-    # Mostrar el menú en la barra lateral
-    seleccion = st.sidebar.radio('Menú', opciones_menu)
-
-    # Dependiendo de la selección, mostrar el contenido correspondiente
-    if seleccion == 'Ingresar operaciones':
-        mostrar_ingresar_operaciones()
-    elif seleccion == 'Histórico de operaciones':
-        mostrar_historico_operaciones()
-    elif seleccion == 'Operaciones en curso':
-        mostrar_operaciones_en_curso()
-    elif seleccion == 'Mismatch de operaciones':
-        mostrar_mismatch_operaciones()
-    elif seleccion == 'Alertas':
-        mostrar_alertas()
-
-def mostrar_ingresar_operaciones():
-    st.write('Aquí puedes ingresar nuevas operaciones.')
-
-def mostrar_historico_operaciones():
-    st.write('Aquí puedes ver el histórico de operaciones.')
-
-def mostrar_operaciones_en_curso():
-    st.write('Aquí puedes ver las operaciones en curso.')
-
-def mostrar_mismatch_operaciones():
-    st.write('Aquí puedes ver los casos de mismatch de operaciones.')
-
-def mostrar_alertas():
-    st.write('Aquí puedes ver las alertas.')
-
-if __name__ == "__main__":
-    main()
-    
-    # Crear DataFrame
-    df = pd.DataFrame(datos)
-
-    # Mostrar tabla
-    st.write(df)
-
-def main():
-    st.title('Tabla de operaciones')
-    generar_tabla()
+    if choice == 'Ingresar operaciones':
+        st.write("Aquí puedes ingresar nuevas operaciones")
+    elif choice == 'Histórico de operaciones':
+        st.write("Aquí puedes ver el histórico de operaciones")
+    elif choice == 'Operaciones en curso':
+        st.write("Aquí puedes ver las operaciones en curso")
+    elif choice == 'Mismatch de operaciones':
+        st.write("Aquí puedes ver los mismatches de operaciones")
+    elif choice == 'Alertas':
+        st.write("Aquí puedes ver las alertas")
 
 if __name__ == "__main__":
     main()
