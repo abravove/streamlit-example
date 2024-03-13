@@ -10,12 +10,10 @@ from datetime import datetime
 Aplicación que permite comparar la información de las operaciones interbancarias. 
 
 """
-import streamlit as st
-
 def main():
     st.title('ABCD')  # Nombre de la aplicación
 
-    st.sidebar.title('︙ Menú')
+    st.sidebar.title('Menú')
 
     options = [':pencil: **Ingresar operaciones**', ':chart_with_upwards_trend: **Histórico de operaciones**', ':hourglass_flowing_sand: **Operaciones en curso**', ':exclamation: **Mismatch de operaciones**', ':warning: **Alertas**']
     choice = st.sidebar.radio('Selecciona una opción', options)
@@ -31,6 +29,8 @@ def main():
         tiempo = st.text_input("Tiempo (formato dd/mm/yyyy)")
         monto = st.number_input("Monto", min_value=0.0)
         tasa = st.number_input("Tasa", min_value=0.0)
+        
+        # Nuevo campo para seleccionar "Sí" o "No" (o "Mach" y "No Mach")
         mach = st.radio("¿Mach?", ["Sí", "No"])
 
         # Botón para enviar los datos ingresados
@@ -47,8 +47,8 @@ def main():
                 "Pata": pata,
                 "Tiempo": tiempo,
                 "Monto": monto,
-                "Tasa": tasa
-                "Mach": mach
+                "Tasa": tasa,
+                "Mach": mach  # Agregar la variable Mach a la operación
             }
 
             # Guarda la operación en una lista o base de datos
