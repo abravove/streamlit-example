@@ -20,7 +20,7 @@ def main():
     options = [':pencil: **Ingresar operaciones**', ':chart_with_upwards_trend: **Histórico de operaciones**', ':hourglass_flowing_sand: **Operaciones en curso**', ':exclamation: **Mismatch de operaciones**', ':warning: **Alertas**']
     choice = st.sidebar.radio('Selecciona una opción', options)
 
-    if choice == 'Ingresar operaciones':
+    if choice == ':pencil: **Ingresar operaciones**':
         st.header('Ingresar operaciones')
 
         # Campos de entrada para ingresar la información
