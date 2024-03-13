@@ -15,7 +15,7 @@ import streamlit as st
 def main():
     st.title('ABCD')  # Nombre de la aplicación
 
-    st.sidebar.title('Menú')
+    st.sidebar.title('︙ Menú')
 
     options = [':pencil: **Ingresar operaciones**', ':chart_with_upwards_trend: **Histórico de operaciones**', ':hourglass_flowing_sand: **Operaciones en curso**', ':exclamation: **Mismatch de operaciones**', ':warning: **Alertas**']
     choice = st.sidebar.radio('Selecciona una opción', options)
