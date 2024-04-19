@@ -43,7 +43,7 @@ def ingresar_operaciones():
     # Campos de entrada para ingresar la información
     operacion = st.text_input("Operación (máximo 10 caracteres)", max_chars=10)
     contraparte = st.selectbox("Contraparte", ['Banco de Chile', 'Internacional', 'Scotiabank', 'BCI']) #Se seleccionan las contrapartes de la lista desplegada
-    tipo = st.selectbox("Tipo", ['swap', 'fwd']) #Se seleccionan las contrapartes de la lista desplegada
+    tipo = st.selectbox("Tipo", ['Swap', 'Fwd']) #Se seleccionan las contrapartes de la lista desplegada
     tiempo = st.text_input("Tiempo (formato dd/mm/yyyy)") #Se debe infresar una fecha, indico el formato, pero no tengo claro cómo hacer que aparezca la típica casilla con un calendario desde la que seleccionar
     st.text("Para pata Activa:")
     divisa_a = st.selectbox("Moneda de pata activa", ['CLP', 'USD', 'EUR', 'JPY'])
