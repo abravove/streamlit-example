@@ -7,16 +7,18 @@ from datetime import datetime
 """
 # Arbitro bancario
 
-Aplicación que permite comparar la información de las operaciones interbancarias. 
+Almacenamiento y comparación de operaciones de derivados interbancarios. 
 
 """
 def main():
-    st.title('ABCD')  # Nombre de la aplicación
+    st.title('Arbitro bacario')  # Nombre de la aplicación
 
+    # Descripción del menú de la izquierda.
+    
     st.sidebar.title('Menú')
 
     options = [':pencil: **Ingresar operaciones**', ':chart_with_upwards_trend: **Histórico de operaciones**', ':hourglass_flowing_sand: **Operaciones en curso**', ':exclamation: **Mismatch de operaciones**', ':warning: **Alertas**']
-    choice = st.sidebar.radio('Selecciona una opción', options)
+    choice = st.sidebar.radio('Seleccione una vista', options)
 
     if choice == ':pencil: **Ingresar operaciones**':
         st.header('Ingresar operaciones')
@@ -31,28 +33,27 @@ def main():
         mostrar_operaciones_en_curso()
 
     elif choice == ':exclamation: **Mismatch de operaciones**':
-        st.write("Aquí puedes ver los mismatches de operaciones")
+        st.write("Operaciones que no hicieron match")
 
     elif choice == ':warning: **Alertas**':
-        st.write("Aquí puedes ver las alertas")
+        st.write("Alertas")
 
 def ingresar_operaciones():
     # Campos de entrada para ingresar la información
     operacion = st.text_input("Operación (máximo 10 caracteres)", max_chars=10)
-    contraparte = st.selectbox("Contraparte", ['abc', 'eft', 'yuv', 'khi'])
-    tipo = st.selectbox("Tipo", ['swap', 'fwd'])
-    pata = st.selectbox("Pata", ['Paga', 'Recibe'])
-    tiempo = st.text_input("Tiempo (formato dd/mm/yyyy)")
-    monto = st.number_input("Monto", min_value=0.0)
-    tasa = st.number_input("Tasa", min_value=0.0)
-    mach = st.radio("¿Mach?", ["Sí", "No"])
-
-    # Botón para enviar los datos ingresados
+    contraparte = st.selectbox("Contraparte", ['abc', 'eft', 'yuv', 'khi']) #Se seleccionan las contrapartes de la lista desplegada
+    tipo = st.selectbox("Tipo", ['swap', 'fwd']) #Se seleccionan las contrapartes de la lista desplegada
+    pata = st.selectbox("Pata", ['Paga', 'Recibe']) #Se seleccionan las contrapartes de la lista desplegada
+    tiempo = st.text_input("Tiempo (formato dd/mm/yyyy)") #Se debe infresar una fecha, indico el formato, pero no tengo claro cómo hacer que aparezca la típica casilla con un calendario desde la que seleccionar
+    monto = st.number_input("Monto", min_value=0.0) 
+    tasa = st.number_input("Tasa")
+    mach = st.radio("¿Mach?", ["Sí", "No"]) #Aún no creo la relación, esto lo dejé así por el momento para probar si funciona.
+    
     if st.button("Enviar"):
-        # Obtiene la fecha de ingreso actual
+        # Fecha de ingreso de la operación (cuando se presiona enviar)
         fecha_ingreso = datetime.now().strftime('%d/%m/%Y')
 
-        # Crea un diccionario con la información de la operación
+        # Diccionario con la información de la operación
         nueva_operacion = {
             "Fecha de ingreso": fecha_ingreso,
             "Operación": operacion,
@@ -65,26 +66,19 @@ def ingresar_operaciones():
             "Mach": mach
         }
 
-        # Guarda la operación en una lista o base de datos
         guardar_operacion(nueva_operacion)
         st.success("Operación ingresada correctamente")
 
 def mostrar_operaciones_historicas():
-    # Obtiene todas las operaciones ingresadas
     operaciones = obtener_operaciones()
-
-    # Muestra las operaciones en una tabla
     if operaciones:
         df = pd.DataFrame(operaciones)
         st.dataframe(df)
     else:
-        st.write("No hay operaciones ingresadas")
+        st.write("No se encuentran operaciones.")
 
 def mostrar_operaciones_en_curso():
-    # Obtiene todas las operaciones ingresadas
     operaciones = obtener_operaciones()
-    
-    # Filtra las operaciones en curso (Mach = Sí)
     if operaciones:
         df = pd.DataFrame(operaciones)
         operaciones_en_curso = df[df['Mach'] == 'Sí']
@@ -92,7 +86,6 @@ def mostrar_operaciones_en_curso():
     else:
         st.write("No hay operaciones en curso")
 
-# Función para guardar la operación en una lista (simulación de base de datos)
 def guardar_operacion(operacion):
     # Puedes guardar la operación en una base de datos o en una lista
     # Aquí lo guardamos en una lista simulada
