@@ -17,7 +17,7 @@ def main():
     
     st.sidebar.title('Menú')
 
-    options = [':pencil: **Ingresar operaciones**', ':chart_with_upwards_trend: **Histórico de operaciones**', ':hourglass_flowing_sand: **Operaciones en curso**', ':exclamation: **Mismatch de operaciones**', ':warning: **Alertas**']
+    options = [':pencil: **Ingresar operaciones**', ':chart_with_upwards_trend: **Histórico de operaciones**', ':hourglass_flowing_sand: **Operaciones en curso**', ':exclamation: **Mismach de operaciones**', ':warning: **Alertas**']
     choice = st.sidebar.radio('Seleccione una vista', options)
 
     if choice == ':pencil: **Ingresar operaciones**':
@@ -32,9 +32,9 @@ def main():
         st.header('Operaciones en curso')
         mostrar_operaciones_en_curso()
 
-    elif choice == ':exclamation: **Mismatch de operaciones**':
-        st.header('Mismatch de operaciones')
-        mostrar_mismatch_de_operaciones()
+    elif choice == ':exclamation: **Mismach de operaciones**':
+        st.header('Mismach de operaciones')
+        mostrar_mismach_de_operaciones()
 
     elif choice == ':warning: **Alertas**':
         st.header('Alertas')
@@ -96,14 +96,14 @@ def mostrar_operaciones_en_curso():
     else:
         st.write("No hay operaciones en curso")
 
-def mostrar_mismatch_de_operaciones():
+def mostrar_mismach_de_operaciones():
     operaciones = obtener_operaciones()
     if operaciones:
         df = pd.DataFrame(operaciones)
-        operaciones_mismatch = df[df['Mach'] == 'No']
-        st.dataframe(operaciones_mismatch)
+        operaciones_mismach = df[df['Mach'] == 'No']
+        st.dataframe(operaciones_mismach)
     else:
-        st.write("No hay operaciones sin matchear.")
+        st.write("No hay operaciones sin machear.")
 
 # Funciones citadas:
     # session_state -> Espacio de almacenamiento de streamlit
