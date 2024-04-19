@@ -42,15 +42,18 @@ def main():
 def ingresar_operaciones():
     # Campos de entrada para ingresar la información
     operacion = st.text_input("Operación (máximo 10 caracteres)", max_chars=10)
-    contraparte = st.selectbox("Contraparte", ['abc', 'eft', 'yuv', 'khi']) #Se seleccionan las contrapartes de la lista desplegada
+    contraparte = st.selectbox("Contraparte", ['Banco de Chile', 'Internacional', 'Scotiabank', 'BCI']) #Se seleccionan las contrapartes de la lista desplegada
     tipo = st.selectbox("Tipo", ['swap', 'fwd']) #Se seleccionan las contrapartes de la lista desplegada
     tiempo = st.text_input("Tiempo (formato dd/mm/yyyy)") #Se debe infresar una fecha, indico el formato, pero no tengo claro cómo hacer que aparezca la típica casilla con un calendario desde la que seleccionar
     st.text("Para pata Activa:")
+    divisa_a = st.selectbox("Moneda de pata activa", ['CLP', 'USD', 'EUR', 'JPY'])
     monto_a = st.number_input("Monto de pata activa", min_value=0.0) 
     tasa_a = st.number_input("Tasa de pata activa")
     st.text("Para pata Pasiva:")
-    monto_b = st.number_input("Monto de pata pasiva", min_value=0.0) 
-    tasa_b = st.number_input("Tasa de pata pasiva")
+    divisa_p = st.selectbox("Moneda de pata pasiva", ['CLP', 'USD', 'EUR', 'JPY'])
+    monto_p = st.number_input("Monto de pata pasiva", min_value=0.0) 
+    tasa_p = st.number_input("Tasa de pata pasiva")
+
     mach = st.radio("¿Mach?", ["Sí", "No"]) #Aún no creo la relación, esto lo dejé así por el momento para probar si funciona.
     
     if st.button("Enviar"):
@@ -64,10 +67,12 @@ def ingresar_operaciones():
             "Contraparte": contraparte,
             "Tipo": tipo,
             "Tiempo": tiempo,
+            "Divisa A": divisa_a,
             "Monto A": monto_a,
             "Tasa A": tasa_a,
-            "Monto B": monto_b,
-            "Tasa B": tasa_b,            
+            "Divisa P": divisa_p,
+            "Monto P": monto_p,
+            "Tasa P": tasa_p,            
             "Mach": mach
         }
 
