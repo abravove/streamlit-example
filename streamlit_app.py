@@ -100,7 +100,7 @@ def mostrar_mismatch_de_operaciones():
     operaciones = obtener_operaciones()
     if operaciones:
         df = pd.DataFrame(operaciones)
-        operaciones_en_curso = df[df['Mach'] == 'No']
+        operaciones_mismatch = df[df['Mach'] == 'No']
         st.dataframe(operaciones_mismatch)
     else:
         st.write("No hay operaciones sin matchear.")
