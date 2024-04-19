@@ -33,10 +33,11 @@ def main():
         mostrar_operaciones_en_curso()
 
     elif choice == ':exclamation: **Mismatch de operaciones**':
-        st.write("Operaciones que no hicieron match")
+        st.header('Mismatch de operaciones')
+        mostrar_mismatch_de_operaciones()
 
     elif choice == ':warning: **Alertas**':
-        st.write("Alertas")
+        st.header('Alertas')
 
 def ingresar_operaciones():
     # Campos de entrada para ingresar la información
@@ -86,15 +87,23 @@ def mostrar_operaciones_en_curso():
     else:
         st.write("No hay operaciones en curso")
 
+def mostrar_mismatch_de_operaciones():
+    operaciones = obtener_operaciones()
+    if operaciones:
+        df = pd.DataFrame(operaciones)
+        operaciones_en_curso = df[df['Mach'] == 'No']
+        st.dataframe(operaciones_mismatch)
+    else:
+        st.write("No hay operaciones sin matchear.")
+
+# Funciones citadas:
+    # session_state -> Espacio de almacenamiento de streamlit
 def guardar_operacion(operacion):
-    # Puedes guardar la operación en una base de datos o en una lista
-    # Aquí lo guardamos en una lista simulada
     if 'operaciones' not in st.session_state:
         st.session_state.operaciones = []
-
+        
     st.session_state.operaciones.append(operacion)
 
-# Función para obtener todas las operaciones guardadas
 def obtener_operaciones():
     if 'operaciones' in st.session_state:
         return st.session_state.operaciones
